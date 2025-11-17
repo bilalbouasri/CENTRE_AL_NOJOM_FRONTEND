@@ -13,7 +13,7 @@
   ],
   "build": {
     "env": {
-      "VITE_API_BASE_URL": "@vite_api_base_url",
+      "VITE_API_BASE_URL": "https://your-backend-domain.com/api",
       "VITE_APP_NAME": "Centre Al Nojom"
     }
   }
