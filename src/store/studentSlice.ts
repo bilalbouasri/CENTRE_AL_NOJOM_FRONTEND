@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { Student, StudentFormData, PaginatedResponse, StudentFilters } from '../types';
+import type { Student, StudentFormData, StudentFilters } from '../types';
 import { studentAPI } from '../services/api';
 
 interface StudentState {

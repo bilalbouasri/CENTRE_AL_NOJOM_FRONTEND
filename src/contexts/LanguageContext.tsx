@@ -1,20 +1,12 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
 
 // Import translation files
 import enTranslations from '../locales/en.json';
 import arTranslations from '../locales/ar.json';
 
-export type Language = 'en' | 'ar';
-
-interface LanguageContextType {
-  language: Language;
-  setLanguage: (lang: Language) => void;
-  t: (key: string) => string;
-  isRTL: boolean;
-}
-
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+import type { Language } from './LanguageContext.types';
+import { LanguageContext } from './LanguageContextInstance';
 
 // Translation resources
 const resources = {
@@ -23,13 +15,13 @@ const resources = {
 };
 
 // Function to get nested translation value
-const getNestedValue = (obj: any, path: string): string => {
+const getNestedValue = (obj: Record<string, unknown>, path: string): string => {
   const keys = path.split('.');
-  let result: any = obj;
+  let result: unknown = obj;
   
   for (const key of keys) {
     if (result && typeof result === 'object' && key in result) {
-      result = result[key];
+      result = (result as Record<string, unknown>)[key];
     } else {
       return path; // Return the path if key not found
     }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import type { RootState, AppDispatch } from '../store';
 import { fetchPayments, setFilters } from '../store/paymentSlice';
@@ -6,7 +6,7 @@ import type { Payment } from '../types';
 
 const Payments: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { payments, pagination, filters, isLoading, error } = useSelector((state: RootState) => state.payments);
+  const { payments, pagination, filters, isLoading } = useSelector((state: RootState) => state.payments);
   
   useEffect(() => {
     dispatch(fetchPayments(filters));
